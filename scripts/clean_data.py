@@ -1,10 +1,10 @@
 import pandas as pd
 
-# Charger les données brutes
+# Chargement des données brutes
 input_path = "../data/mortalite_infantile.csv"
 output_path = "../data/mortalite_infantile_clean.csv"
 
-# Lire le fichier CSV brut
+# Lecture du fichier CSV brut
 df = pd.read_csv(input_path)
 
 # Garder uniquement les colonnes utiles
@@ -26,10 +26,10 @@ df['valeur'] = pd.to_numeric(df['valeur'], errors='coerce')
 df['borne_basse'] = pd.to_numeric(df['borne_basse'], errors='coerce')
 df['borne_haute'] = pd.to_numeric(df['borne_haute'], errors='coerce')
 
-# Supprimer les lignes sans valeur numérique
+# Suppression des lignes sans valeur numérique
 df = df.dropna(subset=['valeur'])
 
-# Sauvegarder le fichier nettoyé
+# Sauvegarde du fichier nettoyé
 df.to_csv(output_path, index=False)
 print(f"Fichier nettoyé sauvegardé : {output_path}")
 print(f"{len(df)} lignes conservées après nettoyage")
